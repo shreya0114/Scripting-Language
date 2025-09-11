@@ -1,11 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect and sanitize student info
     $name   = htmlspecialchars($_POST['name']);
     $roll   = htmlspecialchars($_POST['roll']);
     $class  = htmlspecialchars($_POST['class']);
 
-    // Collect and validate marks
     $subjects = ['english', 'math', 'science', 'computer', 'nepali'];
     $marks = [];
     $error = "";
@@ -25,11 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Calculate total and percentage
     $total = array_sum($marks);
     $percentage = $total / count($subjects);
-
-    // Find division
+    
     if ($percentage >= 80) {
         $division = "Distinction";
     } elseif ($percentage >= 60) {
@@ -42,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $division = "Fail";
     }
 
-    // Display Marksheet (left-aligned)
     echo "<h2>Mark Sheet</h2>";
     echo "<table border='1' cellpadding='10' cellspacing='0'>";
     echo "<tr><td><b>Name</b></td><td>$name</td></tr>";
@@ -59,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "</table>";
 
 } else {
-    // Display input form (left-aligned)
     ?>
     <h2>Student Marksheet Entry</h2>
     <form method="post" action="" style="width:300px;">
@@ -83,4 +77,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
     <?php
 }
+
 ?>
