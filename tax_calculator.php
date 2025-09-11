@@ -1,5 +1,5 @@
 <?php
-// Initialize variables
+
 $tax = 0;
 $result = "";
 
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($income <= 0) {
         $result = "<span style='color:red;'>Please enter a valid annual income.</span>";
     } else {
-        // Married slabs
+        
         if ($marital == "married") {
             if ($income <= 450000) {
                 $tax = $income * 0.01;
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $tax = (450000 * 0.01) + (100000 * 0.10) + (200000 * 0.20) + (550000 * 0.30) + (($income - 1300000) * 0.35);
             }
         }
-        // Unmarried slabs
+     
         else {
             if ($income <= 400000) {
                 $tax = $income * 0.01;
@@ -40,12 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // Female discount
         if ($gender == "female") {
             $tax -= $tax * 0.10;
         }
 
-        // Final result message
         $result = "Annual Income: Rs. " . number_format($income) . "<br>";
         $result .= "Calculated Tax: Rs. " . number_format($tax, 2);
     }
@@ -81,4 +79,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <h3><?php if(!empty($result)) echo $result; ?></h3>
 </body>
+
 </html>
