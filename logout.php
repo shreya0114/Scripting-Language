@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header("Location: index.php"); 
-exit();
+setcookie('username',null,time()-1);
+header('location:login.php');
 ?>
