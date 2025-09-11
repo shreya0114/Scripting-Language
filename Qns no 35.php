@@ -1,5 +1,4 @@
 <?php
-// simple_interest.php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect values from form
@@ -7,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rate      = $_POST['rate'];
     $time      = $_POST['time'];
 
-    // Calculate Simple Interest
     $si = ($principal * $rate * $time) / 100;
 
     echo "<h2 style='text-align:center;'>Simple Interest Calculator</h2>";
@@ -18,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<tr><td><b>Simple Interest</b></td><td>$si</td></tr>";
     echo "</table>";
 } else {
-    // Display input form
+
     ?>
     <h2 style="text-align:center;">Simple Interest Calculator</h2>
     <form method="post" action="" style="width:300px;margin:auto;">
@@ -32,4 +30,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
     <?php
 }
+
 ?>
